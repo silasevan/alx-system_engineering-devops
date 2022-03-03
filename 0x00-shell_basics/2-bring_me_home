@@ -1,4 +1,2 @@
 #!/bin/bash
-echo "/root"
-#!/bin/bash
-cd -
+cd
