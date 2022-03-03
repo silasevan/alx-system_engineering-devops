@@ -1,2 +1,4 @@
 #!/bin/bash
-echo $HOME
+echo "/root"
+#!/bin/bash
+cd -
