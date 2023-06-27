@@ -27,3 +27,5 @@ class nginx_server {
   }
 }
 
+class { 'nginx_server': }
+
