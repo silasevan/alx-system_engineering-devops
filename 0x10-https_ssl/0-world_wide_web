@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Usage: ./0-world_wide_web <domain> <subdomain>
+# Usage: ./1-world_wide_web <domain> <subdomain>
 # Display information about subdomains.
 
 domain_information () {
@@ -12,7 +12,7 @@ then
   domain_information "$1" "www"
   domain_information "$1" "lb-01"
   domain_information "$1" "web-01"
-  domain_information "$1" "-web-02"
+  domain_information "$1" "web-02"
 elif [ "$#" == 2 ]
 then
   domain_information "$1" "$2"
