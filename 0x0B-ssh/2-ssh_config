@@ -1,4 +1,3 @@
-
 # This is the ssh client system-wide configuration file.  See
 # ssh_config(5) for more information.  This file provides defaults for
 # users, and the values can be changed in per-user configuration files
@@ -22,7 +21,7 @@ Host *
 #   ForwardX11Trusted yes
 #   RhostsRSAAuthentication no
 #   RSAAuthentication yes
-    PasswordAuthentication no
+#   PasswordAuthentication no
 #   HostbasedAuthentication no
 #   GSSAPIAuthentication no
 #   GSSAPIDelegateCredentials no
@@ -36,7 +35,7 @@ Host *
 #   IdentityFile ~/.ssh/identity
 #   IdentityFile ~/.ssh/id_rsa
 #   IdentityFile ~/.ssh/id_dsa
-    IdentityFile ~/.ssh/holberton
+#   IdentityFile ~/.ssh/school
 #   Port 22
 #   Protocol 2,1
 #   Cipher 3des
