@@ -1,31 +1,20 @@
-class nginx_server {
-  package { 'nginx':
-    ensure => 'installed',
-  }
-
-  file { '/etc/nginx/sites-available/default':
-    ensure  => 'file',
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0644',
-    content => template('nginx_server/default.erb'),
-    notify  => Service['nginx'],
-  }
-
-  file { '/var/www/html/index.html':
-    ensure  => 'file',
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0644',
-    content => 'Hello World!',
-  }
-
-  service { 'nginx':
-    ensure  => 'running',
-    enable  => true,
-    require => File['/etc/nginx/sites-available/default'],
-  }
+# Puppet manifest to install nginx
+package { 'nginx':
+  ensure => installed,
 }
 
-class { 'nginx_server': }
+file_line { 'aaaaa':
+  ensure => 'present',
+  path   => '/etc/nginx/sites-available/default',
+  after  => 'listen 80 default_server;',
+  line   => 'rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;',
+}
 
+file { '/var/www/html/index.html':
+  content => 'Hello World!',
+}
+
+service { 'nginx':
+  ensure  => running,
+  require => Package['nginx'],
+}
