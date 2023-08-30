@@ -1,9 +1,1 @@
-# 0x05. Processes and signals
-### -- DevOps
-
-Shell
-
-Bash
-
-Syscall
-
+# 0x05-processes_and_signals
