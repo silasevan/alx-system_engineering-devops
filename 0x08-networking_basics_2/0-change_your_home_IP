@@ -1,7 +1,24 @@
-#!/usr/bin/env bash
-# Change localhost to 127.0.0.2
-# Change facebook.com to 8.8.8.8
+#!/bin/bash
 
-cp /etc/hosts ~/hosts.new
-sed -i 's/127.*$/127.0.0.2 localhost\n8.8.8.8 facebook.com/' ~/hosts.new
-cp -f ~/hosts.new /etc/hosts
+# Check if running as root
+if [ "$(id -u)" -ne 0 ]; then
+  echo "Please run this script as root"
+  exit 1
+fi
+
+# Define the new IP addresses
+localhost_ip="127.0.0.2"
+facebook_ip="8.8.8.8"
+
+# Update /etc/hosts file
+sed -i "s/^127.0.0.1.*/$localhost_ip localhost/" /etc/hosts
+sed -i "s/^.*facebook.com.*/$facebook_ip facebook.com/" /etc/hosts
+
+# Clear DNS cache
+if command -v systemd-resolve &> /dev/null; then
+  systemd-resolve --flush-caches
+elif command -v service &> /dev/null; then
+  service networking restart
+fi
+
+echo "Configuration completed."
