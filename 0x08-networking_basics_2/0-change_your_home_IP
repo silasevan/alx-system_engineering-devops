@@ -14,11 +14,4 @@ facebook_ip="8.8.8.8"
 sed -i "s/^127.0.0.1.*/$localhost_ip localhost/" /etc/hosts
 sed -i "s/^.*facebook.com.*/$facebook_ip facebook.com/" /etc/hosts
 
-# Clear DNS cache
-if command -v systemd-resolve &> /dev/null; then
-  systemd-resolve --flush-caches
-elif command -v service &> /dev/null; then
-  service networking restart
-fi
-
 echo "Configuration completed."
